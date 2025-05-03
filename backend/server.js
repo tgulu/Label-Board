@@ -6,6 +6,8 @@ const connectDB = require("./config/db");
 
 const app = express();
 
+const authRoutes = require("./routes/authRoutes");
+
 //Middleware to handle CORS
 app.use(
   cors({
@@ -22,7 +24,7 @@ connectDB();
 app.use(express.json());
 
 //Routes
-// app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 // app.use("/api/users", userRoutes);
 // app.use("/api/tasks", taskRoutes);
 // app.use("/api/reports", reportRoutes);
