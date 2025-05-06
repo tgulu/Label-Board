@@ -23,6 +23,7 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
+    // Determine user role: Admin if correct token is provided, otherwise Member
     let role = "memeber";
     if (
       adminInviteToken &&
@@ -51,8 +52,8 @@ const registerUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      profileImageUrl: user.profileImageUrl,
       role: user.role,
+      profileImageUrl: user.profileImageUrl,
       token: generateToken(user._id),
     });
   } catch (error) {
