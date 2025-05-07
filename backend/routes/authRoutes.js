@@ -5,6 +5,7 @@ const {
   getUserProfile,
   updateUserProfile,
 } = require("../controllers/authController");
+const upload = require("../middlewares/uploadMiddleware");
 
 const { protect } = require("../middlewares/authMiddleware");
 
