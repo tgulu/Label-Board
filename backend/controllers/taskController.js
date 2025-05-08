@@ -1,4 +1,4 @@
-const Task = require("../models/taskModel");
+const Task = require("../models/Task");
 
 // @desc    Get all tasks (Admin: all, User: only assigned tasks)
 // @route   GET /api/tasks
@@ -33,7 +33,7 @@ const createTask = async (req, res) => {
       priority,
       dueDate,
       assignedTo,
-      attachment,
+      attachments,
       todoChecklist,
     } = req.body;
 
@@ -51,10 +51,10 @@ const createTask = async (req, res) => {
       assignedTo,
       createdBy: req.user._id,
       todoChecklist,
-      attachment,
+      attachments,
     });
 
-    res.stauts(201).json({ message: "Task created successfully", task });
+    res.status(201).json({ message: "Task created successfully", task });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
