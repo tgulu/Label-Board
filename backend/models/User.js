@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     profileImageUrl: { type: String, default: null },
-    role: { type: String, enum: ["user", "admin"], default: "memeber" }, //role-based access
+    role: { type: String, enum: ["member", "admin"], default: "member" }, //role-based access
   },
   {
     timestamps: true,
