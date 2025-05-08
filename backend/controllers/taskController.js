@@ -5,6 +5,7 @@ const Task = require("../models/taskModel");
 // @access  Private
 const getTasks = async (req, res) => {
   try {
+    // logic here
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
@@ -15,6 +16,7 @@ const getTasks = async (req, res) => {
 // @access  Private
 const getTaskById = async (req, res) => {
   try {
+    // logic here
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
@@ -23,39 +25,79 @@ const getTaskById = async (req, res) => {
 // @desc    Create a task (Admin only)
 // @route   POST /api/tasks
 // @access  Private (Admin)
-const createTask = async (req, res) => {};
+const createTask = async (req, res) => {
+  try {
+    // logic here
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // @desc    Update task details
 // @route   PUT /api/tasks/:id
 // @access  Private
-const updateTask = async (req, res) => {};
+const updateTask = async (req, res) => {
+  try {
+    // logic here
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // @desc    Delete a task (Admin only)
 // @route   DELETE /api/tasks/:id
 // @access  Private (Admin)
-const deleteTask = async (req, res) => {};
+const deleteTask = async (req, res) => {
+  try {
+    // logic here
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // @desc    Update task status
 // @route   PUT /api/tasks/:id/status
 // @access  Private
-const updateTaskStatus = async (req, res) => {};
+const updateTaskStatus = async (req, res) => {
+  try {
+    // logic here
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // @desc    Update task checklist
 // @route   PUT /api/tasks/:id/todo
 // @access  Private
-const updateTaskChecklist = async (req, res) => {};
+const updateTaskChecklist = async (req, res) => {
+  try {
+    // logic here
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // @desc    Dashboard data (Admin only)
 // @route   GET /api/tasks/dashboard-data
 // @access  Private
-
-const getDashboardData = async (req, res) => {};
+const getDashboardData = async (req, res) => {
+  try {
+    // logic here
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 // @desc    Dashboard data (User-specific)
 // @route   GET /api/tasks/user-dashboard-data
 // @access  Private
-
-const getUserDashboardData = async (req, res) => {};
+const getUserDashboardData = async (req, res) => {
+  try {
+    // logic here
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 module.exports = {
   getTasks,
