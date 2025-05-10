@@ -8,7 +8,6 @@ const AuthLayout = ({ children }) => {
         <h2 className="text-lg font-medium text-black">Label Board Manager</h2>
         {children}
       </div>
-      {/* 1:38:36 */}
       <div className="hidden md:flex w-[40vw] h-screen items-center justify-center bg-[url('/src/assets/images/blue.jpg')]   bg-cover bg-no-repeat bg-center overflow-hidden p-8">
         <img src={UIimage} alt="" className="w-64 lg:w-[90%]" />
       </div>
