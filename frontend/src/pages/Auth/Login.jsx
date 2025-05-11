@@ -27,6 +27,9 @@ const Login = () => {
     }
 
     setError("");
+
+    try {
+    } catch (error) {}
   };
 
   return (
