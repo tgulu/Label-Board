@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AuthLayout from "../../components/layouts/AuthLayout";
 import { validateEmail } from "../../utils/helper";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import Input from "../../components/Inputs/Input";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
+import { UserContext } from "../../context/UserContext";
+import uploadImage from "../../utils/uploadImage";
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -11,12 +15,16 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [adminInviteToken, setAdminInviteToken] = useState("");
-
   const [error, setError] = useState(null);
+
+  const { updateUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   // Handle Sign Form Submit
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    let profileImageUrl = "";
 
     if (!fullName) {
       setError("Please enter full name");
@@ -34,7 +42,42 @@ const SignUp = () => {
 
     setError("");
 
-    //Sign up API
+    // Sign up API
+    try {
+      // Upload image if present
+      if (profilePic) {
+        const imgUploadRes = await uploadImage(profilePic);
+        profileImageUrl = imgUploadRes.imageUrl || "";
+      }
+
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        name: fullName,
+        email,
+        password,
+        profileImageUrl,
+        adminInviteToken,
+      });
+
+      const { token, role } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(response.data);
+
+        // Redirect based on role
+        if (role === "admin") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/user/dashboard");
+        }
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong, please try again");
+      }
+    }
   };
 
   return (
@@ -64,7 +107,6 @@ const SignUp = () => {
               placeholder="david@bowie.com"
               type="text"
             />
-
             <Input
               value={password}
               onChange={({ target }) => setPassword(target.value)}
@@ -73,13 +115,14 @@ const SignUp = () => {
               type="password"
             />
             <Input
-              value={password}
-              onChange={({ target }) => setPassword(target.value)}
+              value={adminInviteToken}
+              onChange={({ target }) => setAdminInviteToken(target.value)}
               label="Admin Invite Token"
               placeholder="6 Digit Code"
-              type="text"
+              type="password"
             />
           </div>
+
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
 
           <button type="submit" className="btn-primary">
