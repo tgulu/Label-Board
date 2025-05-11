@@ -3,7 +3,9 @@ import AuthLayout from "../../components/layouts/AuthLayout";
 import { useNavigate, Link } from "react-router-dom";
 import Input from "../../components/Inputs/Input";
 import { validateEmail } from "../../utils/helper";
-import { validatePassword } from "../../utils/helper";
+// import { validatePassword } from "../../utils/helper";
+import { API_PATHS } from "../../utils/apiPaths";
+import axiosInstance from "../../utils/axiosInstance";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,7 +31,29 @@ const Login = () => {
     setError("");
 
     try {
-    } catch (error) {}
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password,
+      });
+
+      const { token, role } = response.data;
+      if (token) {
+        localStorage.setItem("token", token);
+
+        //Redirect based on role
+        if (role === "admin") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/user/dashboard");
+        }
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong, please try again");
+      }
+    }
   };
 
   return (
