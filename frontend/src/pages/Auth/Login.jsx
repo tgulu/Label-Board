@@ -14,7 +14,7 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const { updateUser } = useContext(UserContext);
-  const navigate = useNavigate(); // fixed typo
+  const navigate = useNavigate(); //
 
   // Handle Login Form Submit
   const handleLogin = async (e) => {
@@ -32,6 +32,7 @@ const Login = () => {
 
     setError("");
 
+    //Login API Call
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
