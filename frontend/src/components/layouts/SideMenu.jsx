@@ -34,18 +34,25 @@ const SideMenu = ({ activeMenu }) => {
   }, [user]);
 
   return (
-    <div className="">
-      <div className="">
+    <div className="w-64 h-[calc(100vh-61px] bg-white border-gray-200/50 sticky top-[61px] z-20 ">
+      <div className="flex flex-col items-center justify-center mb-7 pt-5">
         <div className="">
           <img
             src={user?.profileImageUrl || ""}
             alt="Profile Image"
-            className=""
+            className=" w-20 h-20 bg-slate-400 rounded-full object-cover"
           />
         </div>
 
-        {user?.role === "admin" && <div className="">Admin</div>}
-        <h5 className="">{user?.name || ""}</h5>
+        {user?.role === "admin" && (
+          <div className="text-[10px] font-medium text-white bg-primary px-3 py-0.5 rounded mt-1">
+            Admin
+          </div>
+        )}
+
+        <h5 className="text-gray-950 font-medium leading-6 mt-3">
+          {user?.name || ""}
+        </h5>
 
         <p className="">{user?.email || ""}</p>
       </div>
@@ -60,7 +67,7 @@ const SideMenu = ({ activeMenu }) => {
           } py-3 px-6 mb-3 cursor-pointer`}
           onClick={() => handleClick(item.path)}
         >
-          <item.icon className="" />
+          <item.icon className="text-xl" />
           {item.label}
         </button>
       ))}
