@@ -33,7 +33,39 @@ const SideMenu = ({ activeMenu }) => {
     return () => {};
   }, [user]);
 
-  return <div>SIDEMENU</div>;
+  return (
+    <div className="">
+      <div className="">
+        <div className="">
+          <img
+            src={user?.profileImageUrl || ""}
+            alt="Profile Image"
+            className=""
+          />
+        </div>
+
+        {user?.role === "admin" && <div className="">Admin</div>}
+        <h5 className="">{user?.name || ""}</h5>
+
+        <p className="">{user?.email || ""}</p>
+      </div>
+
+      {sideMenuData.map((item, index) => (
+        <button
+          key={"menu_${index}"}
+          className={`w-full flex items-center gap-4 text-[15px]" ${
+            activeMenu == item.label
+              ? "text-primary bg-linear-to-r from-blue-50 to-blue-100/50 border-r-3"
+              : ""
+          } py-3 px-6 mb-3 cursor-pointer`}
+          onClick={() => handleClick(item.path)}
+        >
+          <item.icon className="" />
+          {item.label}
+        </button>
+      ))}
+    </div>
+  );
 };
 
 export default SideMenu;
