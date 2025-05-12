@@ -1,5 +1,4 @@
-import React from "react";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
@@ -11,9 +10,7 @@ export const useUserAuth = () => {
     if (loading) return;
     if (user) return;
 
-    if (!user) {
-      clearUser();
-      navigate("/login");
-    }
+    clearUser();
+    navigate("/login");
   }, [user, loading, clearUser, navigate]);
 };
