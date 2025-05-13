@@ -10,6 +10,7 @@ import { LuTrash2 } from "react-icons/lu";
 import SelectDropdown from "..//../components/Inputs/SelectDropDown";
 import DeleteAlert from "../../components/DeleteAlert";
 import Modal from "../../components/Modal";
+import SelectUsers from "../../components/Inputs/SelectUsers";
 
 const CreateTask = () => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const CreateTask = () => {
     });
   };
 
+  // Create Task
   const createTask = async () => {
     setLoading(true);
 
@@ -59,6 +61,7 @@ const CreateTask = () => {
     }
   };
 
+  // Update Task
   const updateTask = async () => {
     setLoading(true);
 
@@ -78,7 +81,7 @@ const CreateTask = () => {
 
   const handleSubmit = async () => {
     setError(null);
-
+    // Input validation
     if (!taskData.title.trim()) {
       setError("Title is required.");
       return;
@@ -99,6 +102,7 @@ const CreateTask = () => {
     }
   };
 
+  // get Task info by ID
   const getTaskDetailsByID = async () => {
     try {
       const response = await axiosInstance.get(
@@ -213,10 +217,23 @@ const CreateTask = () => {
                 <input
                   type="date"
                   className="form-input"
-                  value={taskData.dueDate}
+                  value={taskData?.dueDate}
                   onChange={({ target }) =>
                     handleValueChange("dueDate", target.value)
                   }
+                />
+              </div>
+
+              <div className="col-span-12 md:col-span-3">
+                <label className="text-xs font-medium text-slate-600">
+                  Assign To
+                </label>
+
+                <SelectUsers
+                  selectedUsers={taskData.assignedTo}
+                  setSelectedUsers={(value) => {
+                    handleValueChange("assignedTo", value);
+                  }}
                 />
               </div>
             </div>
@@ -225,9 +242,9 @@ const CreateTask = () => {
               <p className="text-xs font-medium text-red-500 mt-5">{error}</p>
             )}
 
-            <div className="flex justify-end mt-7">
+            <div className="flex justify-center mt-7">
               <button
-                className="add-btn"
+                className="btn-primary"
                 onClick={handleSubmit}
                 disabled={loading}
               >
