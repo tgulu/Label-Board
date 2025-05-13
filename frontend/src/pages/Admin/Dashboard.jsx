@@ -18,8 +18,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const [dashboardData, setDashboardData] = useState(null);
-  const [pieChartData, setPieChartData] = useState([]);
-  const [barChartData, setBarChartData] = useState([]);
 
   const getDashboardData = async () => {
     try {
@@ -34,9 +32,9 @@ const Dashboard = () => {
     }
   };
 
-  const onSeeMore = () => {
-    navigate("/admin/tasks");
-  };
+  // const onSeeMore = () => {
+  //   navigate("/admin/tasks");
+  // };
 
   useEffect(() => {
     getDashboardData();
@@ -92,9 +90,9 @@ const Dashboard = () => {
             <div className="flex items-center justify-between ">
               <h5 className="text-lg">Recent Tasks</h5>
 
-              <button className="card-btn" onClick={onSeeMore}>
+              {/* <button className="card-btn" onClick={onSeeMore}>
                 See All <LuArrowRight className="text-base" />
-              </button>
+              </button> */}
             </div>
 
             <TaskListTable tableData={dashboardData?.recentTasks || []} />
