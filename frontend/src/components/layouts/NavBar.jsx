@@ -19,7 +19,7 @@ const Navbar = ({ activeMenu }) => {
         )}
       </button>
 
-      <h2 className="text-lg font-medium text-black">Release Plan</h2>
+      <h2 className="text-lg font-medium text-black ml-4">Label Board</h2>
 
       {openSideMenu && (
         <div className="fixed top-[61px] -ml-4 bg-white">
