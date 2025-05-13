@@ -14,7 +14,7 @@ const SelectDropdown = ({ options, value, onChange, placeholder }) => {
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-sm text-black outline-none bg-green-400 border border-slate-100 px-2.5 py-3 rounded-md mt-2 flex justify-between items-center"
+        className="w-full text-sm text-black outline-none bg-gray-200/50 border border-slate-100 px-2.5 py-3 rounded-md mt-2 flex justify-between items-center"
       >
         {value
           ? options.find((opt) => opt.value === value)?.label
