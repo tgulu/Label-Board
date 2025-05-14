@@ -2,15 +2,17 @@ import React, { createContext, useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
 
+// Exportable reference to clearUser for use in axiosInstance
+let externalClearUser = () => {};
+export const getExternalClearUser = () => externalClearUser;
+
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // New state to track loading
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (user) return;
-
     const accessToken = localStorage.getItem("token");
     if (!accessToken) {
       setLoading(false);
@@ -42,6 +44,9 @@ const UserProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("token");
   };
+
+  // Make it available globally
+  externalClearUser = clearUser;
 
   return (
     <UserContext.Provider value={{ user, loading, updateUser, clearUser }}>
