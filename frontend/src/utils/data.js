@@ -25,12 +25,12 @@ export const SIDE_MENU_DATA = [
     icon: LuSquarePlus,
     path: "/admin/create-task",
   },
-  {
-    id: "04",
-    label: "Team",
-    icon: LuUsers,
-    path: "/admin/users",
-  },
+  // {
+  //   id: "04",
+  //   label: "Team",
+  //   icon: LuUsers,
+  //   path: "/admin/users",
+  // },
 
   {
     id: "05",
