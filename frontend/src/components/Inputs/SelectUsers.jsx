@@ -80,9 +80,7 @@ const SelectUsers = ({ selectedUsers = [], setSelectedUsers }) => {
                 className="w-10 h-10 rounded-full"
               />
               <div className="flex-1">
-                <p className="font-medium text-gray-800 dark:text-white">
-                  {user.name}
-                </p>
+                <p className="font-medium text-black ">{user.name}</p>
                 <p className="text-[13px] text-gray-500">{user.email}</p>
               </div>
 
