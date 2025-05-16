@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "./apiPaths";
+import { getExternalClearUser } from "../context/UserContext";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -19,28 +20,26 @@ axiosInstance.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 // Response Interceptor
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   (error) => {
-    // Handle common errors globally
-    if (error.response) {
-      if (error.response.status === 401) {
-        // Redirect to login page
-        window.location.href = "/login";
-      } else if (error.response.status === 500) {
-        console.error("Server error. Please try again later.");
-      }
+    const clearUser = getExternalClearUser();
+    const status = error.response?.status;
+    const message = error.response?.data?.error;
+
+    if (status === 401 || message === "jwt expired") {
+      clearUser();
+      window.location.href = "/login";
+    } else if (status === 500) {
+      console.error("Server error. Please try again later.");
     } else if (error.code === "ECONNABORTED") {
       console.error("Request timeout. Please try again.");
     }
+
     return Promise.reject(error);
   }
 );
