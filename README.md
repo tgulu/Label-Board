@@ -1,7 +1,10 @@
 # Label Board
 
 🎵 Label Board – The Task Manager for Artists & Labels
-Label Board is a MERN-based task manager designed specifically for independent artists, producers, and record label teams. Organise your releases, plan studio sessions, assign tasks, and keep the creative process flowing — all in one place.
+
+# Website
+
+https://label-board.greenhouseprojects.space/
 
 ## Description
 
@@ -23,9 +26,7 @@ Integrated Axios for API communication between front-end and Express.js backend,
 
 Included custom dashboards, release timelines, and collaborator tagging, allowing each team member to view and manage only their assigned responsibilities.
 
-## Website
-
-https://label-board.greenhouseprojects.space/
+#
 
 ## Image of Website
 
