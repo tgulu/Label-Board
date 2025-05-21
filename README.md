@@ -7,16 +7,17 @@ Label Board is a MERN-based task manager designed specifically for independent a
 
 Label Board is a full-stack MERN-based task manager built for music labels and creative collectives. Designed to support artists, producers, engineers, and visual teams, it enables seamless collaboration . From mixing and mastering to artwork and promotional planning, Label Board helps organise creative workflows with clarity and structure.
 
-Features
-Create and manage projects (EPs, singles, albums, events)
+## Features
 
-Assign tasks to team members (mixing, artwork, promo, etc.)
+🎛️ Create and manage projects (EPs, singles, albums, events)
 
-Set deadlines and track progress visually
+🗂️ Assign tasks to team members (mixing, artwork, promo, etc.)
 
-Role-based access for artists, managers, and collaborators
+📅 Set deadlines and track progress visually
 
-Dashboard with task status and release timelines
+👥 Role-based access for artists, managers, and collaborators
+
+📈 Dashboard with task status and release timelines
 
 Integrated Axios for API communication between front-end and Express.js backend, with secure JWT-based user authentication and MongoDB data persistence.
 
@@ -39,16 +40,17 @@ Label Managers coordinating across a team of artists, engineers, and designers
 
 Collaborators like producers, photographers, and marketers
 
-Tech Stack (MERN)
-MongoDB – store user profiles, releases, tasks, and timeline data
+##Tech Stack (MERN)
 
-Express + Node.js – API backend, auth, task logic
+- MongoDB – store user profiles, releases, tasks, and timeline data
 
-React – front-end state management and dynamic UI
+- Express + Node.js – API backend, auth, task logic
 
-Tailwind CSS – fast styling with responsive UI
+- React – front-end state management and dynamic UI
 
-JWT Auth – user login
+- Tailwind CSS – fast styling with responsive UI
+
+- JWT Auth – user login
 
 ## Installation & Setup
 
@@ -76,7 +78,7 @@ JWT Auth – user login
 
    - Create a `.env` file in the root directory and add:
      `REACT_APP_API_URL=http://localhost:5000
-   `
+`
 
 5. Build for production:
    ```bash
