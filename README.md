@@ -40,7 +40,7 @@ Label Managers coordinating across a team of artists, engineers, and designers
 
 Collaborators like producers, photographers, and marketers
 
-##Tech Stack (MERN)
+## Tech Stack (MERN)
 
 - MongoDB – store user profiles, releases, tasks, and timeline data
 
