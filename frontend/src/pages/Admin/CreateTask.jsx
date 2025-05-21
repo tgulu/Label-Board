@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import { LuTrash2 } from "react-icons/lu";
-import SelectDropdown from "..//../components/Inputs/SelectDropDown";
+import SelectDropdown from "../../components/Inputs/SelectDropdown";
 import DeleteAlert from "../../components/DeleteAlert";
 import Modal from "../../components/Modal";
 import SelectUsers from "../../components/Inputs/SelectUsers";
