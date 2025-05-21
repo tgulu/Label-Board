@@ -11,7 +11,7 @@ import InfoCard from "../../components/Cards/InfoCard";
 import { LuArrowRight } from "react-icons/lu";
 import TaskListTable from "../../components/TaskListTable";
 
-const Dashboard = () => {
+const UserDashboard = () => {
   useUserAuth();
 
   const { user } = useContext(UserContext);
@@ -103,4 +103,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default UserDashboard;
