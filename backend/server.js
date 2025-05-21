@@ -37,6 +37,10 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // const __dirname = path.resolve();
 
 //Start Server
+
+app.get("/", (req, res) => {
+  res.send("API is running — nothing to see here.");
+});
 const PORT = process.env.PORT || 5000;
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static(path.join(__dirname, "../frontend/dist")));
